@@ -132,7 +132,7 @@ export const Content = ({ setOpen }) => {
   return (
     <Container>
       <Grid container>
-        <Grid sx={{ mt: 4 }} container item md={8} spacing={2}>
+        <Grid sx={{ mt: 4 }} container item xs={12} md={8} spacing={2}>
           {userPasswords.length ? (
             userPasswords.map((item) => (
               <Grid key={item.id} item md={4}>
@@ -173,7 +173,7 @@ export const Content = ({ setOpen }) => {
             <Typography variant="h4">You have no passwords to show. ADD some passwords</Typography>
           )}
         </Grid>
-        <Grid item md={4}>
+        <Grid item xs={12} md={4}>
           <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <Paper
               onSubmit={handleSubmit}

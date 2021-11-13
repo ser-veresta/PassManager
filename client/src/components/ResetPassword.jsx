@@ -60,7 +60,10 @@ export const ResetPassword = () => {
         alignItems: "center",
         gap: 3,
         p: 4,
-        width: "25%",
+        width: {
+          xs: "90%",
+          md: "25%",
+        },
         borderRadius: "10px",
         bgcolor: "white",
         zIndex: 2,

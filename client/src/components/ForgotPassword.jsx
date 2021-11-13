@@ -40,13 +40,16 @@ export const ForgotPassword = ({ setOpen }) => {
         alignItems: "center",
         gap: 3,
         p: 4,
-        width: "25%",
+        width: {
+          xs: "80%",
+          md: "25%",
+        },
         borderRadius: "10px",
         bgcolor: "white",
         zIndex: 2,
       }}
     >
-      <Typography variant="h5">Login</Typography>
+      <Typography variant="h5">Forgot Password</Typography>
       {err && (
         <Box sx={{ width: "100%", p: 2, bgcolor: "pink", borderRadius: "10px" }}>
           <Typography>{err}</Typography>

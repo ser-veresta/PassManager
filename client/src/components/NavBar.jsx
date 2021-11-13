@@ -47,7 +47,6 @@ export const NavBar = ({ setOpen, user, setUser }) => {
               <Button
                 sx={{ borderRadius: "25px", textTransform: "capitalize" }}
                 variant="contained"
-                size="large"
                 onClick={() => setOpen({ state: true, component: <Login setOpen={setOpen} /> })}
               >
                 Login
@@ -56,7 +55,6 @@ export const NavBar = ({ setOpen, user, setUser }) => {
                 onClick={() => setOpen({ state: true, component: <Register setOpen={setOpen} /> })}
                 sx={{ borderRadius: "25px", textTransform: "capitalize" }}
                 variant="contained"
-                size="large"
               >
                 Register
               </Button>

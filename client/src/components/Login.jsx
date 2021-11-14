@@ -70,6 +70,11 @@ export const Login = ({ setOpen }) => {
       }}
     >
       <Typography variant="h5">Login</Typography>
+      <Box sx={{ p: 5, bgcolor: "lightgray", borderRadius: "10px" }}>
+        <Typography>Test User</Typography>
+        <Typography>username: test</Typography>
+        <Typography>password: 123</Typography>
+      </Box>
       {err && (
         <Box sx={{ width: "100%", p: 2, bgcolor: "pink", borderRadius: "10px" }}>
           <Typography>{err}</Typography>

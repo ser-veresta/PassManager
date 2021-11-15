@@ -96,7 +96,8 @@ export const Content = ({ setOpen }) => {
     }
   };
 
-  const handleDelete = async () => {
+  const handleDelete = async (id) => {
+    setId(id);
     setErr(null);
     setSuccess(null);
 
@@ -115,6 +116,32 @@ export const Content = ({ setOpen }) => {
     } catch (error) {
       setSuccess(null);
 
+      setErr(error?.response?.data?.error || "Server Error");
+    }
+  };
+
+  const handleEdit = async (id) => {
+    setErr(null);
+
+    if (!id) {
+      setErr("no id selected");
+      return;
+    }
+
+    try {
+      const { data } = await publicRequest.get(`/password/${id}`, {
+        headers: {
+          token: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+
+      setPassword(data.password);
+      setUsername(data.username);
+      setTitle(data.title);
+
+      setErr(null);
+    } catch (error) {
+      setId(null);
       setErr(error?.response?.data?.error || "Server Error");
     }
   };
@@ -151,16 +178,14 @@ export const Content = ({ setOpen }) => {
                     </Button>
                     <IconButton
                       onClick={() => {
-                        setId(item.id);
-                        setTitle(item.title);
+                        handleEdit(item.id);
                       }}
                     >
                       <Edit />
                     </IconButton>
                     <IconButton
                       onClick={() => {
-                        setId(item.id);
-                        handleDelete();
+                        handleDelete(item.id);
                       }}
                     >
                       <Delete />

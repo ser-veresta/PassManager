@@ -44,7 +44,7 @@ export const Content = ({ setOpen }) => {
 
   useEffect(() => {
     window.addEventListener("storage", () => setToken(localStorage.getItem("token")));
-    getPasswords();
+    localStorage.getItem("token") && getPasswords();
   }, [token]);
 
   const handleSubmit = async (e) => {
@@ -99,7 +99,6 @@ export const Content = ({ setOpen }) => {
   };
 
   const handleDelete = async (id) => {
-    setId(id);
     setErr(null);
     setSuccess(null);
 
@@ -112,7 +111,6 @@ export const Content = ({ setOpen }) => {
 
       setSuccess(data);
       setErr(null);
-      setId(null);
 
       getPasswords();
     } catch (error) {
@@ -129,6 +127,8 @@ export const Content = ({ setOpen }) => {
       setErr("no id selected");
       return;
     }
+
+    setId(id);
 
     try {
       const { data } = await publicRequest.get(`/password/${id}`, {

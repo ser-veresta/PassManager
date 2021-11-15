@@ -24,6 +24,7 @@ export const Content = ({ setOpen }) => {
   const [title, setTitle] = useState("");
   const [err, setErr] = useState(null);
   const [success, setSuccess] = useState(null);
+  const [token, setToken] = useState(null);
 
   const getPasswords = async () => {
     setErr(null);
@@ -42,8 +43,9 @@ export const Content = ({ setOpen }) => {
   };
 
   useEffect(() => {
+    window.addEventListener("storage", () => setToken(localStorage.getItem("token")));
     getPasswords();
-  }, []);
+  }, [token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
